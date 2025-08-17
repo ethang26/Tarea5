@@ -1,0 +1,24 @@
+@model Tarea1.Models.Planta
+@{
+    ViewData["Title"] = Model.Nombre;
+    Layout = "_Layout";
+}
+
+<a class="btn btn-outline-success mb-3" asp-action="Index">← Volver</a>
+
+<div class="row g-4 align-items-start">
+    <div class="col-12 col-lg-6">
+        <img class="w-100 rounded shadow" src="@Model.Imagen" alt="@Model.Nombre"
+             style="max-height:520px; object-fit:cover"
+             onerror="this.src='https://picsum.photos/seed/fallback@Model.Id/1000/700'">
+    </div>
+    <div class="col-12 col-lg-6">
+        <h2 class="mb-1">@Model.Nombre</h2>
+        <div class="text-muted mb-2">@Model.Especie</div>
+        <p class="mb-2"><strong>Origen:</strong> @Model.Origen</p>
+        <p class="mb-2"><strong>Altura máxima:</strong> @Model.Altura_Maxima m</p>
+        <hr />
+        <h5>Descripción</h5>
+        <p class="lead">@Model.Notas</p>
+    </div>
+</div>

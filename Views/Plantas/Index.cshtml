@@ -1,0 +1,25 @@
+@model IEnumerable<Tarea1.Models.Planta>
+@{
+    ViewData["Title"] = "Listado de Plantas";
+    Layout = "_Layout";
+}
+<h1 class="mb-3">Listado de Plantas (50)</h1>
+<p class="text-muted">Origen, especie, altura máxima y acceso al detalle con foto y descripción.</p>
+
+<div class="row g-3">
+@foreach (var p in Model)
+{
+    <div class="col-12 col-sm-6 col-lg-4">
+        <div class="card h-100 shadow-sm">
+            <img class="card-img-top" src="@p.Imagen" alt="@p.Nombre" onerror="this.src='https://picsum.photos/seed/fallback@p.Id/800/500'">
+            <div class="card-body d-flex flex-column">
+                <h5 class="card-title mb-1">@p.Nombre</h5>
+                <div class="small text-muted mb-2">@p.Especie</div>
+                <div class="mb-2"><span class="badge bg-success-subtle border border-success text-success">@p.Origen</span></div>
+                <p class="mb-3 small">Altura máx.: <strong>@p.Altura_Maxima m</strong></p>
+                <a class="btn btn-success mt-auto" asp-action="Detalles" asp-route-id="@p.Id">Ver detalle</a>
+            </div>
+        </div>
+    </div>
+}
+</div>
